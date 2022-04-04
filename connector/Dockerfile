@@ -2,11 +2,11 @@ FROM node:14
 
 WORKDIR /usr/src/app
 
-COPY ./connector/package*.json ./
+COPY ./package*.json ./
 
 RUN npm install
 
-COPY . ./connector
+COPY . .
 
 RUN npm run build
 

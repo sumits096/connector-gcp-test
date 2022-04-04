@@ -1,0 +1,56 @@
+steps:
+- name: 'gcr.io/cloud-builders/npm'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    cd connector
+
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: 
+    [ 
+      'build',
+      '-t',
+      'gcr.io/$PROJECT_ID/ixnestjsapptestix:latest',
+      '-t',
+      'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA',
+      '-t',
+      'gcr.io/$PROJECT_ID/ixnestjsapptestix:$BUILD_ID',
+      '-f',
+      './connector/Dockerfile',
+      '.'
+    ]
+  id: 'build-image-ixnestjsapptestix'
+  waitFor: ['-'] # The '-' indicates that this step begin immediately
+
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: 
+    [
+      'push', 
+      'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA'
+    ]
+  id: 'push-image-to-container-registry'
+  waitFor: ['build-image-ixnestjsapptestix'] # The push start once build is done
+
+# Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    [
+      'run',
+      'deploy',
+      'ixnestjsapptestix',
+      '--image',
+      'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA',
+      '--region',
+      'us-west2',
+      '--platform',
+      'managed',
+      '--allow-unauthenticated',
+    ]
+
+images:
+- 'gcr.io/$PROJECT_ID/ixnestjsapptestix:latest'
+- 'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA'
+- 'gcr.io/$PROJECT_ID/ixnestjsapptestix:$BUILD_ID'

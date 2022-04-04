@@ -17,8 +17,8 @@ steps:
       'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA',
       '-t',
       'gcr.io/$PROJECT_ID/ixnestjsapptestix:$BUILD_ID',
-      '-f',
-      './connector/Dockerfile',
+      # '-f',
+      # './connector/Dockerfile',
       '.'
     ]
   id: 'build-image-ixnestjsapptestix'

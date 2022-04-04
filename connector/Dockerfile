@@ -1,6 +1,6 @@
 FROM node:14
 
-WORKDIR /usr/src/app/connector
+WORKDIR /usr/src/app
 
 COPY ./connector/package*.json ./
 

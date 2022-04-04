@@ -1,11 +1,4 @@
 steps:
-# - name: 'gcr.io/cloud-builders/git'
-#   entrypoint: /bin/sh
-#   args:
-#   - '-c'
-#   - |
-#     cd connector
-
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   dir: connector/
@@ -18,8 +11,6 @@ steps:
       'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA',
       '-t',
       'gcr.io/$PROJECT_ID/ixnestjsapptestix:$BUILD_ID',
-      # '-f',
-      # './connector/Dockerfile',
       '.'
     ]
   id: 'build-image-ixnestjsapptestix'

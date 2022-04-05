@@ -6,14 +6,14 @@ steps:
     [ 
       'build',
       '-t',
-      'gcr.io/$PROJECT_ID/ixnestjsapptestix:latest',
+      'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:latest',
       '-t',
-      'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA',
+      'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:$COMMIT_SHA',
       '-t',
-      'gcr.io/$PROJECT_ID/ixnestjsapptestix:$BUILD_ID',
+      'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:$BUILD_ID',
       '.'
     ]
-  id: 'build-image-ixnestjsapptestix'
+  id: 'build-image-${_IMAGE_NAME}'
   waitFor: ['-'] # The '-' indicates that this step begin immediately
 
 # Push the container image to Container Registry
@@ -21,10 +21,10 @@ steps:
   args: 
     [
       'push', 
-      'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA'
+      'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:$COMMIT_SHA'
     ]
   id: 'push-image-to-container-registry'
-  waitFor: ['build-image-ixnestjsapptestix'] # The push start once build is done
+  waitFor: ['build-image-${_IMAGE_NAME}'] # The push start once build is done
 
 # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -32,9 +32,9 @@ steps:
     [
       'run',
       'deploy',
-      'ixnestjsapptestix',
+      '${_IMAGE_NAME}',
       '--image',
-      'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA',
+      'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:$COMMIT_SHA',
       '--region',
       'us-west2',
       '--platform',
@@ -43,6 +43,6 @@ steps:
     ]
 
 images:
-- 'gcr.io/$PROJECT_ID/ixnestjsapptestix:latest'
-- 'gcr.io/$PROJECT_ID/ixnestjsapptestix:$COMMIT_SHA'
-- 'gcr.io/$PROJECT_ID/ixnestjsapptestix:$BUILD_ID'
+- 'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:latest'
+- 'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:$COMMIT_SHA'
+- 'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:$BUILD_ID'

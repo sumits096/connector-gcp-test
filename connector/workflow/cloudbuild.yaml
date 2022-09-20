@@ -11,12 +11,6 @@ steps:
   waitFor: ['-'] # The '-' indicates that this step begin immediately
   secretEnv: ['PRIVATE_KEY']
 
-availableSecrets:
-  secretManager:
-  - versionName: projects/sumit-solutions/secrets/PRIVATE_KEY/versions/latest
-    env: 'PRIVATE_KEY'
-
-
 # Build the artifact image
 - name: 'gcr.io/cloud-builders/docker'
   dir: connector/
@@ -68,6 +62,10 @@ availableSecrets:
   id: 'deploy-image-to-cloud-run'
   waitFor: ['copy-env-variables']
 
+availableSecrets:
+  secretManager:
+  - versionName: projects/sumit-solutions/secrets/PRIVATE_KEY/versions/latest
+    env: 'PRIVATE_KEY'
 
 # # Push the container image to Container Registry
 # - name: 'gcr.io/cloud-builders/docker'

@@ -46,7 +46,7 @@ steps:
     [
       'run',
       'deploy',
-      'my-service-name',
+      '${_SERVICE_NAME}',
       '--image',
       '${_IMAGE_NAME}:$COMMIT_SHA',
       '--project',

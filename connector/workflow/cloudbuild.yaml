@@ -27,7 +27,7 @@ steps:
       '.'
     ]
   id: 'build-connector-image'
-  waitFor: ['execute-code-analysis'] 
+  waitFor: ['copy-env-variables'] 
 
 # Push the build image to Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
@@ -60,7 +60,7 @@ steps:
       '.env'
     ]
   id: 'deploy-image-to-cloud-run'
-  waitFor: ['copy-env-variables']
+  waitFor: ['push-image-to-artifact-registry']
 
 availableSecrets:
   secretManager:

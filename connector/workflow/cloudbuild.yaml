@@ -55,9 +55,7 @@ steps:
       'global',
       '--platform',
       'managed',
-      '--allow-unauthenticated',
-      '--env-vars-file',
-      '.env'
+      '--allow-unauthenticated'
     ]
   id: 'deploy-image-to-cloud-run'
   waitFor: ['push-image-to-artifact-registry']

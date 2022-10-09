@@ -19,7 +19,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "api-test": "newman run connector/test/api/MsDynamics.postman_collection.json -e connector/test/api/feature.postman_environment.json -d connector/test/api/apiTestIterationValues.json -r cli,junit --reporter-junitfull-export connector/test/api/api-test-result.xml",
+    "test:api": "newman run connector/test/api/MsDynamics.postman_collection.json -e connector/test/api/feature.postman_environment.json -d connector/test/api/apiTestIterationValues.json -r cli,junit --reporter-junitfull-export connector/test/api/api-test-result.xml",
     "prettier-format": "prettier --config .prettierrc **/*.ts --write"
   },
   "dependencies": {

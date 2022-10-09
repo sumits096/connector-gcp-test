@@ -1,0 +1,3472 @@
+{
+	"info": {
+		"_postman_id": "de247cd3-8cd9-4095-bf73-2d48eba701da",
+		"name": "MsDynamics",
+		"description": "MsDynamics connector API description",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21941608"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "specification",
+					"item": [
+						{
+							"name": "Specification Controller app Describe",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"appDescribe status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"appDescribe should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        pm.expect(responseJson.data.appName).eql('Connector');\r",
+											"        pm.expect(responseJson.data.link.internalSpec).eql('/api/specification/internal');\r",
+											"    });\r",
+											"}\r",
+											"\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"appDescribe should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"        pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/specification/appDescribe",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"specification",
+										"appDescribe"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/specification/appDescribe",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specification",
+												"appDescribe"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/specification/appDescribe",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specification",
+												"appDescribe"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/specification/appDescribe",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specification",
+												"appDescribe"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Specification Controller internal Spec",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"internalSpec status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"internalSpec should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        pm.expect(responseJson.data.provider).eql('Ovation');\r",
+											"    });\r",
+											"}\r",
+											"\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"internalSpec should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"        pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.request.url.query.add({\r",
+											"    key: 'orgId',\r",
+											"    value: pm.iterationData.get('orgId'),\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/specification/internal",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"specification",
+										"internal"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/specification/internal?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specification",
+												"internal"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/specification/internal?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specification",
+												"internal"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/specification/internal?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specification",
+												"internal"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "org Configuration",
+					"item": [
+						{
+							"name": "Org Configuration Controller get",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.request.url.query.add({\r",
+											"    key: 'orgId',\r",
+											"    value: pm.iterationData.get('orgId'),\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"get orgConfiguration status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"get orgConfiguration should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        if (pm.expect(responseJson.data).length == 0) {\r",
+											"            pm.expect(responseJson.data[0].clientId).is.not.null;\r",
+											"            pm.expect(responseJson.data[0].orgId).eql(pm.iterationData.get('orgId'));\r",
+											"        }\r",
+											"    });\r",
+											"}\r",
+											"\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"get orgConfiguration should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"        pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/orgConfiguration",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"orgConfiguration"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Org Configuration Controller post",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const orgConfiguration = {\r",
+											"  \"tenantId\": \"99c32bdd-18fa-4f18-9dc8-083e6d55e848\",\r",
+											"  \"clientId\": \"b1590ede-3000-43ad-ac27-4772c3a7bc63\",\r",
+											"  \"clientSecret\": \"eVC8Q~mTOh2OkteJ.GJD48juBY65LEgpkY~fPcCo\",\r",
+											"  \"resource\": \"https://orgadd85824.api.crm.dynamics.com/\",\r",
+											"  \"orgId\": pm.iterationData.get('orgId'),\r",
+											"  \"isActive\": true\r",
+											"}\r",
+											"pm.request.url.query.add({\r",
+											"    key: 'orgId',\r",
+											"    value: pm.iterationData.get('orgId'),\r",
+											"});\r",
+											"pm.variables.set('orgConfiguration', JSON.stringify(orgConfiguration));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"post orgConfiguration status code is 201\", () => {\r",
+											"        pm.response.to.have.status(201);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"post orgConfiguration should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        let orgConfiguration = JSON.parse(pm.variables.get('orgConfiguration'));\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        pm.expect(orgConfiguration.tenantId).is.not.null;\r",
+											"        pm.expect(orgConfiguration.clientId).is.not.null;\r",
+											"        pm.expect(orgConfiguration.clientSecret).is.not.null;\r",
+											"        pm.expect(orgConfiguration.resource).is.not.null;\r",
+											"        pm.expect(orgConfiguration.resource).to.match(/(https?:\\/\\/)?([\\w\\-])+\\.{1}([a-zA-Z]{2,63})([\\/\\w-]*)*\\/?\\??([^#\\n\\r]*)?#?([^\\n\\r]*)/);\r",
+											"        pm.expect(orgConfiguration.isActive).is.not.null;\r",
+											"        if (pm.expect(responseJson.data).length > 0) {\r",
+											"            const len = Object.keys(responseJson.data).length;\r",
+											"            for (let i = 0; i < len; i++) {\r",
+											"                {\r",
+											"                    pm.expect(responseJson.data[i]).is.not.null;\r",
+											"                    pm.expect(responseJson.data[i].orgId).eql(pm.iterationData.get('orgId'));\r",
+											"                }\r",
+											"            }\r",
+											"        }\r",
+											"    });\r",
+											"}\r",
+											"\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"post orgConfiguration should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"        pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{orgConfiguration}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/orgConfiguration",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"orgConfiguration"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"ex dolor labore\",\n  \"tenantId\": \"exercitation non esse\",\n  \"clientId\": \"proident mollit\",\n  \"clientSecret\": \"eiusmod velit minim\",\n  \"resource\": \"Excepteur velit ullamco do\",\n  \"orgId\": \"adipisicing irure tempor sint pariatur\",\n  \"isActive\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"ex dolor labore\",\n  \"tenantId\": \"exercitation non esse\",\n  \"clientId\": \"proident mollit\",\n  \"clientSecret\": \"eiusmod velit minim\",\n  \"resource\": \"Excepteur velit ullamco do\",\n  \"orgId\": \"adipisicing irure tempor sint pariatur\",\n  \"isActive\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"ex dolor labore\",\n  \"tenantId\": \"exercitation non esse\",\n  \"clientId\": \"proident mollit\",\n  \"clientSecret\": \"eiusmod velit minim\",\n  \"resource\": \"Excepteur velit ullamco do\",\n  \"orgId\": \"adipisicing irure tempor sint pariatur\",\n  \"isActive\": true\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"ex dolor labore\",\n  \"tenantId\": \"exercitation non esse\",\n  \"clientId\": \"proident mollit\",\n  \"clientSecret\": \"eiusmod velit minim\",\n  \"resource\": \"Excepteur velit ullamco do\",\n  \"orgId\": \"adipisicing irure tempor sint pariatur\",\n  \"isActive\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"ex dolor labore\",\n  \"tenantId\": \"exercitation non esse\",\n  \"clientId\": \"proident mollit\",\n  \"clientSecret\": \"eiusmod velit minim\",\n  \"resource\": \"Excepteur velit ullamco do\",\n  \"orgId\": \"adipisicing irure tempor sint pariatur\",\n  \"isActive\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Org Configuration Controller put",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const orgConfiguration = {\r",
+											"  \"tenantId\": \"99c32bdd-18fa-4f18-9dc8-083e6d55e848\",\r",
+											"  \"clientId\": \"b1590ede-3000-43ad-ac27-4772c3a7bc63\",\r",
+											"  \"clientSecret\": \"eVC8Q~mTOh2OkteJ.GJD48juBY65LEgpkY~fPcCo\",\r",
+											"  \"resource\": \"https://orgadd85824.api.crm.dynamics.com/\",\r",
+											"  \"orgId\": pm.iterationData.get('orgId'),\r",
+											"  \"isActive\": true\r",
+											"}\r",
+											"\r",
+											"const id = '3a37d67d-9c04-e775-d911-1928cfdf1326';\r",
+											"pm.variables.set('id', JSON.stringify(id));\r",
+											"\r",
+											"pm.request.url.query.add({\r",
+											"    key: 'id',\r",
+											"    value: id,\r",
+											"});\r",
+											"pm.variables.set('orgConfiguration', JSON.stringify(orgConfiguration));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"put orgConfiguration status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"put orgConfiguration should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        let orgConfiguration = JSON.parse(pm.variables.get('orgConfiguration'));\r",
+											"        const id = pm.variables.get('id');\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        pm.expect(id).is.not.null;\r",
+											"        pm.expect(orgConfiguration.tenantId).is.not.null;\r",
+											"        pm.expect(orgConfiguration.clientId).is.not.null;\r",
+											"        pm.expect(orgConfiguration.clientSecret).is.not.null;\r",
+											"        pm.expect(orgConfiguration.resource).is.not.null;\r",
+											"        console.log(orgConfiguration.resource);\r",
+											"        pm.expect(orgConfiguration.resource).to.match(/(https?:\\/\\/)?([\\w\\-])+\\.{1}([a-zA-Z]{2,63})([\\/\\w-]*)*\\/?\\??([^#\\n\\r]*)?#?([^\\n\\r]*)/);\r",
+											"        pm.expect(orgConfiguration.isActive).is.not.null;\r",
+											"        if (pm.expect(responseJson.data).length > 0) {\r",
+											"            const len = Object.keys(responseJson.data).length;\r",
+											"            for (let i = 0; i < len; i++) {\r",
+											"                {\r",
+											"                    pm.expect(responseJson.data[i]).is.not.null;\r",
+											"                    pm.expect(responseJson.data[i].orgId).eql(pm.iterationData.get('orgId'));\r",
+											"                }\r",
+											"            }\r",
+											"        }\r",
+											"    });\r",
+											"}\r",
+											"\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"put orgConfiguration should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"        pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{orgConfiguration}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/orgConfiguration/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"orgConfiguration",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"ex dolor labore\",\n  \"tenantId\": \"exercitation non esse\",\n  \"clientId\": \"proident mollit\",\n  \"clientSecret\": \"eiusmod velit minim\",\n  \"resource\": \"Excepteur velit ullamco do\",\n  \"orgId\": \"adipisicing irure tempor sint pariatur\",\n  \"isActive\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "minim exercitation",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"ex dolor labore\",\n  \"tenantId\": \"exercitation non esse\",\n  \"clientId\": \"proident mollit\",\n  \"clientSecret\": \"eiusmod velit minim\",\n  \"resource\": \"Excepteur velit ullamco do\",\n  \"orgId\": \"adipisicing irure tempor sint pariatur\",\n  \"isActive\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "minim exercitation",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"ex dolor labore\",\n  \"tenantId\": \"exercitation non esse\",\n  \"clientId\": \"proident mollit\",\n  \"clientSecret\": \"eiusmod velit minim\",\n  \"resource\": \"Excepteur velit ullamco do\",\n  \"orgId\": \"adipisicing irure tempor sint pariatur\",\n  \"isActive\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/orgConfiguration/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orgConfiguration",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "minim exercitation",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "entity Field",
+					"item": [
+						{
+							"name": "Entity Field Controller boomtown",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"ovation entity field status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"ovation entity field should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        pm.expect(responseJson).length >= 1;\r",
+											"    });\r",
+											"}\r",
+											"\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 500) {\r",
+											"    pm.test(\"ovation entity field should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"            pm.response.to.not.have.status(200);\r",
+											"            pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"            pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/entityField/boomtown",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"entityField",
+										"boomtown"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/entityField/boomtown",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"entityField",
+												"boomtown"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/entityField/boomtown",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"entityField",
+												"boomtown"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/entityField/boomtown",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"entityField",
+												"boomtown"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Entity Field Controller ms Dynamics",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"ms-dynamics entity field status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"ms-dynamics entity field should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        const entityName = pm.variables.get('id');\r",
+											"        pm.expect(entityName).is.not.null;\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        pm.expect(responseJson).length >= 1;\r",
+											"    });\r",
+											"}\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"ms-dynamics entity field should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"            pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"            pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.request.url.query.add({\r",
+											"    key: 'orgId',\r",
+											"    value: pm.iterationData.get('orgId'),\r",
+											"});\r",
+											"\r",
+											"const entityName = 'account';\r",
+											"pm.variables.set('entityName', JSON.stringify(entityName));\r",
+											"pm.request.url.query.add({\r",
+											"    key: 'entityName',\r",
+											"    value: entityName,\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/entityField/msDynamics",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"entityField",
+										"msDynamics"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/entityField/msDynamics?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"entityField",
+												"msDynamics"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/entityField/msDynamics?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"entityField",
+												"msDynamics"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/entityField/msDynamics?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"entityField",
+												"msDynamics"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "mapping",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Mapping Controller put",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const mappingData = {\r",
+													"    \"entityName\": \"account\",\r",
+													"    \"mapping\": [\r",
+													"        {\r",
+													"            \"btFieldName\": \"name\",\r",
+													"            \"crmFieldName\": \"accountName\",\r",
+													"            \"syncDirection\": \"syncNone\"\r",
+													"        }\r",
+													"    ]\r",
+													"};\r",
+													"pm.variables.set('mappingData', JSON.stringify(mappingData));\r",
+													"\r",
+													"const id = 'edb64f7-0618-be07-98ee-3fe44d827e34';\r",
+													"pm.variables.set('id', JSON.stringify(id));\r",
+													"\r",
+													"pm.request.url.query.add({\r",
+													"    key: 'id',\r",
+													"    value: id,\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+													"    pm.test(\"put mapping status code is 200\", () => {\r",
+													"        pm.response.to.have.status(200);\r",
+													"    });\r",
+													"\r",
+													"    pm.test(\"put mapping should return valid response\", () => {\r",
+													"        const responseJson = pm.response.json();\r",
+													"        const id = pm.variables.get('id');\r",
+													"        let mappingData = JSON.parse(pm.variables.get('mappingData'));\r",
+													"        pm.expect(id).is.not.null;\r",
+													"        pm.expect(mappingData.entityName).is.not.null;\r",
+													"        const len = Object.keys(mappingData.mapping).length;\r",
+													"        for (let i = 0; i < len; i++) {\r",
+													"            pm.expect(mappingData.mapping[i].btFieldName).is.not.null;\r",
+													"            pm.expect(mappingData.mapping[i].crmFieldName).is.not.null;\r",
+													"            pm.expect(mappingData.mapping[i].syncDirection).is.not.null;\r",
+													"        }\r",
+													"        pm.expect(responseJson).is.not.null;\r",
+													"        if (pm.expect(responseJson.data).is.not.null) {\r",
+													"            pm.expect(responseJson.data).is.not.null;\r",
+													"        }\r",
+													"    });\r",
+													"}\r",
+													"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+													"    pm.test(\"put mapping should return invalid response\", () => {\r",
+													"        const responseJson = pm.response.json();\r",
+													"        pm.response.to.not.have.status(200);\r",
+													"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+													"        pm.expect(responseJson.title).is.not.null;\r",
+													"    });\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{{mappingData}}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/mapping/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"mapping",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "The resource was returned successfully",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
+													{
+														"description": "(Required) ",
+														"key": "X-Boomtown-Request-Id",
+														"value": "minim exercitation"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"sunt eu\",\n  \"orgId\": \"et adipisicing\",\n  \"entityName\": \"ullamco\",\n  \"mapping\": [\n    {\n      \"btFieldName\": \"in magna \",\n      \"crmFieldName\": \"labore voluptate amet\",\n      \"syncDirection\": \"eu\"\n    },\n    {\n      \"btFieldName\": \"ut\",\n      \"crmFieldName\": \"Excepteur in\",\n      \"syncDirection\": \"ut exercitation\"\n    }\n  ],\n  \"isActive\": true,\n  \"createdDate\": \"cillum ullamco ea\",\n  \"createdBy\": \"laborum enim id adipisicing\",\n  \"updatedDate\": \"Ut officia nulla in\",\n  \"updatedBy\": \"nulla ad et\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/mapping/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"mapping",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "minim exercitation",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+										},
+										{
+											"name": "Forbidden Error",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
+													{
+														"description": "(Required) ",
+														"key": "X-Boomtown-Request-Id",
+														"value": "minim exercitation"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"sunt eu\",\n  \"orgId\": \"et adipisicing\",\n  \"entityName\": \"ullamco\",\n  \"mapping\": [\n    {\n      \"btFieldName\": \"in magna \",\n      \"crmFieldName\": \"labore voluptate amet\",\n      \"syncDirection\": \"eu\"\n    },\n    {\n      \"btFieldName\": \"ut\",\n      \"crmFieldName\": \"Excepteur in\",\n      \"syncDirection\": \"ut exercitation\"\n    }\n  ],\n  \"isActive\": true,\n  \"createdDate\": \"cillum ullamco ea\",\n  \"createdBy\": \"laborum enim id adipisicing\",\n  \"updatedDate\": \"Ut officia nulla in\",\n  \"updatedBy\": \"nulla ad et\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/mapping/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"mapping",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "minim exercitation",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+										},
+										{
+											"name": "The resource was not Found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
+													{
+														"description": "(Required) ",
+														"key": "X-Boomtown-Request-Id",
+														"value": "minim exercitation"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"sunt eu\",\n  \"orgId\": \"et adipisicing\",\n  \"entityName\": \"ullamco\",\n  \"mapping\": [\n    {\n      \"btFieldName\": \"in magna \",\n      \"crmFieldName\": \"labore voluptate amet\",\n      \"syncDirection\": \"eu\"\n    },\n    {\n      \"btFieldName\": \"ut\",\n      \"crmFieldName\": \"Excepteur in\",\n      \"syncDirection\": \"ut exercitation\"\n    }\n  ],\n  \"isActive\": true,\n  \"createdDate\": \"cillum ullamco ea\",\n  \"createdBy\": \"laborum enim id adipisicing\",\n  \"updatedDate\": \"Ut officia nulla in\",\n  \"updatedBy\": \"nulla ad et\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/mapping/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"mapping",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "minim exercitation",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Mapping Controller delete",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const id = 'edb64f7-0618-be07-98ee-3fe44d827e34';\r",
+													"pm.variables.set('id', JSON.stringify(id));\r",
+													"\r",
+													"pm.request.url.query.add({\r",
+													"    key: 'id',\r",
+													"    value: id,\r",
+													"});\r",
+													"pm.request.url.query.add({\r",
+													"    key: 'orgId',\r",
+													"    value: pm.iterationData.get('orgId'),\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+													"    pm.test(\"delete mapping status code is 200\", () => {\r",
+													"        pm.response.to.have.status(200);\r",
+													"    });\r",
+													"\r",
+													"    pm.test(\"delete mapping should return valid response\", () => {\r",
+													"        const responseJson = pm.response.json();\r",
+													"        const id = pm.variables.get('id');\r",
+													"        pm.expect(id).is.not.null;\r",
+													"        pm.expect(responseJson).is.not.null\r",
+													"        pm.expect(responseJson.data).eql(true);\r",
+													"    });\r",
+													"}\r",
+													"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+													"    pm.test(\"delete mapping should return invalid response\", () => {\r",
+													"        const responseJson = pm.response.json();\r",
+													"        pm.response.to.not.have.status(200);\r",
+													"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+													"        pm.expect(responseJson.title).is.not.null;\r",
+													"    });\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/mapping/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"mapping",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "The resource was returned successfully",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
+													{
+														"description": "(Required) ",
+														"key": "X-Boomtown-Request-Id",
+														"value": "minim exercitation"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/mapping/:id?orgId=minim exercitation",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"mapping",
+														":id"
+													],
+													"query": [
+														{
+															"key": "orgId",
+															"value": "minim exercitation"
+														}
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "minim exercitation",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+										},
+										{
+											"name": "Forbidden Error",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
+													{
+														"description": "(Required) ",
+														"key": "X-Boomtown-Request-Id",
+														"value": "minim exercitation"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/mapping/:id?orgId=minim exercitation",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"mapping",
+														":id"
+													],
+													"query": [
+														{
+															"key": "orgId",
+															"value": "minim exercitation"
+														}
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "minim exercitation",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+										},
+										{
+											"name": "The resource was not Found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
+													{
+														"description": "(Required) ",
+														"key": "X-Boomtown-Request-Id",
+														"value": "minim exercitation"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/mapping/:id?orgId=minim exercitation",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"mapping",
+														":id"
+													],
+													"query": [
+														{
+															"key": "orgId",
+															"value": "minim exercitation"
+														}
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "minim exercitation",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Mapping Controller get",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.request.url.query.add({\r",
+											"    key: 'orgId',\r",
+											"    value: pm.iterationData.get('orgId'),\r",
+											"});\r",
+											"\r",
+											"const entityName = 'account';\r",
+											"pm.variables.set('entityName', JSON.stringify(entityName));\r",
+											"pm.request.url.query.add({\r",
+											"    key: 'entityName',\r",
+											"    value: entityName,\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"get mapping status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"get mapping should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        const entityName = pm.variables.get('id');\r",
+											"        pm.expect(entityName).is.not.null;\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        pm.expect(responseJson).length == 1;\r",
+											"    });\r",
+											"}\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"get mapping should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"        pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "<Bearer Token>",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mapping",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mapping"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/mapping?orgId=minim exercitation&entityName=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"mapping"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												},
+												{
+													"key": "entityName",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/mapping?orgId=minim exercitation&entityName=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"mapping"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												},
+												{
+													"key": "entityName",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/mapping?orgId=minim exercitation&entityName=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"mapping"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												},
+												{
+													"key": "entityName",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Mapping Controller post",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const mappingData = {\r",
+											"  \"orgId\": pm.iterationData.get('orgId'),\r",
+											"  \"entityName\": \"account\",\r",
+											"  \"mapping\": [\r",
+											"    {\r",
+											"      \"btFieldName\": \"name\",\r",
+											"      \"crmFieldName\": \"accountName\",\r",
+											"      \"syncDirection\": \"syncNone\"\r",
+											"    }\r",
+											"  ]\r",
+											"};\r",
+											"\r",
+											"pm.variables.set('mappingData', JSON.stringify(mappingData));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"post mapping status code is 201\", () => {\r",
+											"        pm.response.to.have.status(201);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"post mapping should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        let mappingData = JSON.parse(pm.variables.get('mappingData'));\r",
+											"        pm.expect(mappingData.orgId).is.not.null;\r",
+											"        pm.expect(mappingData.entityName).is.not.null;\r",
+											"        const len = Object.keys(mappingData.mapping).length;\r",
+											"        for (let i = 0; i < len; i++) {\r",
+											"            pm.expect(mappingData.mapping[i].btFieldName).is.not.null;\r",
+											"            pm.expect(mappingData.mapping[i].crmFieldName).is.not.null;\r",
+											"            pm.expect(mappingData.mapping[i].syncDirection).is.not.null;\r",
+											"        }\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        if (pm.expect(responseJson.data).is.not.null) {\r",
+											"            pm.expect(responseJson.data).is.not.null;\r",
+											"            pm.expect(responseJson.data.orgId).eql(pm.iterationData.get('orgId'));\r",
+											"        }\r",
+											"    });\r",
+											"}\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"post mapping should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"        pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{mappingData}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/mapping",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mapping"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"sunt eu\",\n  \"orgId\": \"et adipisicing\",\n  \"entityName\": \"ullamco\",\n  \"mapping\": [\n    {\n      \"btFieldName\": \"in magna \",\n      \"crmFieldName\": \"labore voluptate amet\",\n      \"syncDirection\": \"eu\"\n    },\n    {\n      \"btFieldName\": \"ut\",\n      \"crmFieldName\": \"Excepteur in\",\n      \"syncDirection\": \"ut exercitation\"\n    }\n  ],\n  \"isActive\": true,\n  \"createdDate\": \"cillum ullamco ea\",\n  \"createdBy\": \"laborum enim id adipisicing\",\n  \"updatedDate\": \"Ut officia nulla in\",\n  \"updatedBy\": \"nulla ad et\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/mapping",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"mapping"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"sunt eu\",\n  \"orgId\": \"et adipisicing\",\n  \"entityName\": \"ullamco\",\n  \"mapping\": [\n    {\n      \"btFieldName\": \"in magna \",\n      \"crmFieldName\": \"labore voluptate amet\",\n      \"syncDirection\": \"eu\"\n    },\n    {\n      \"btFieldName\": \"ut\",\n      \"crmFieldName\": \"Excepteur in\",\n      \"syncDirection\": \"ut exercitation\"\n    }\n  ],\n  \"isActive\": true,\n  \"createdDate\": \"cillum ullamco ea\",\n  \"createdBy\": \"laborum enim id adipisicing\",\n  \"updatedDate\": \"Ut officia nulla in\",\n  \"updatedBy\": \"nulla ad et\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/mapping",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"mapping"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"sunt eu\",\n  \"orgId\": \"et adipisicing\",\n  \"entityName\": \"ullamco\",\n  \"mapping\": [\n    {\n      \"btFieldName\": \"in magna \",\n      \"crmFieldName\": \"labore voluptate amet\",\n      \"syncDirection\": \"eu\"\n    },\n    {\n      \"btFieldName\": \"ut\",\n      \"crmFieldName\": \"Excepteur in\",\n      \"syncDirection\": \"ut exercitation\"\n    }\n  ],\n  \"isActive\": true,\n  \"createdDate\": \"cillum ullamco ea\",\n  \"createdBy\": \"laborum enim id adipisicing\",\n  \"updatedDate\": \"Ut officia nulla in\",\n  \"updatedBy\": \"nulla ad et\"\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"sunt eu\",\n  \"orgId\": \"et adipisicing\",\n  \"entityName\": \"ullamco\",\n  \"mapping\": [\n    {\n      \"btFieldName\": \"in magna \",\n      \"crmFieldName\": \"labore voluptate amet\",\n      \"syncDirection\": \"eu\"\n    },\n    {\n      \"btFieldName\": \"ut\",\n      \"crmFieldName\": \"Excepteur in\",\n      \"syncDirection\": \"ut exercitation\"\n    }\n  ],\n  \"isActive\": true,\n  \"createdDate\": \"cillum ullamco ea\",\n  \"createdBy\": \"laborum enim id adipisicing\",\n  \"updatedDate\": \"Ut officia nulla in\",\n  \"updatedBy\": \"nulla ad et\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/mapping",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"mapping"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"sunt eu\",\n  \"orgId\": \"et adipisicing\",\n  \"entityName\": \"ullamco\",\n  \"mapping\": [\n    {\n      \"btFieldName\": \"in magna \",\n      \"crmFieldName\": \"labore voluptate amet\",\n      \"syncDirection\": \"eu\"\n    },\n    {\n      \"btFieldName\": \"ut\",\n      \"crmFieldName\": \"Excepteur in\",\n      \"syncDirection\": \"ut exercitation\"\n    }\n  ],\n  \"isActive\": true,\n  \"createdDate\": \"cillum ullamco ea\",\n  \"createdBy\": \"laborum enim id adipisicing\",\n  \"updatedDate\": \"Ut officia nulla in\",\n  \"updatedBy\": \"nulla ad et\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/mapping",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"mapping"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "customer",
+					"item": [
+						{
+							"name": "Customer Controller get",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"get customer status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    });\r",
+											"    pm.test(\"get customer should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.expect(responseJson.data).is.not.null;\r",
+											"    });\r",
+											"}\r",
+											"\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"get customer should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"        pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/customer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"customer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/customer?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/customer?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/customer?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Customer Controller post",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const customerData = {\r",
+											"    \"name\": \"Barry\"\r",
+											"}\r",
+											"\r",
+											"pm.variables.set('customerData', JSON.stringify(customerData));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+											"    pm.test(\"post customer status code is 201\", () => {\r",
+											"        pm.response.to.have.status(201);\r",
+											"    });\r",
+											"\r",
+											"    pm.test(\"post customer should return valid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        let customerData = JSON.parse(pm.variables.get('customerData'));\r",
+											"        pm.expect(customerData.name).is.not.null;\r",
+											"        pm.expect(responseJson).is.not.null;\r",
+											"        if (pm.expect(responseJson.data).is.not.null) {\r",
+											"            pm.expect(responseJson.data.name).is.not.null;\r",
+											"        }\r",
+											"    });\r",
+											"}\r",
+											"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+											"    pm.test(\"post customer should return invalid response\", () => {\r",
+											"        const responseJson = pm.response.json();\r",
+											"        pm.response.to.not.have.status(200);\r",
+											"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+											"        pm.expect(responseJson.title).is.not.null;\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{customerData}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/customer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"customer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "The resource was returned successfully",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"proident magna\",\n  \"name\": \"ad ipsum anim tempor\",\n  \"nameLegal\": \"occaecat do dolore non\",\n  \"street1\": \"esse exercitation\",\n  \"street2\": \"amet incididunt in\",\n  \"city\": \"officia sint irure laborum\",\n  \"state\": \"magna qui amet\",\n  \"zipcode\": \"ut minim consequat cillum ut\",\n  \"email\": \"consectetur pariatur\",\n  \"phone\": \"est dolore qui mollit incididunt\",\n  \"externalId\": \"proident ex\",\n  \"industry\": \"adipisicing occaecat magna pariatur re\",\n  \"status\": \"quis cillum ipsum\",\n  \"created\": \"2022-07-13T09:27:05.889Z\",\n  \"latitude\": 3163771.099624887,\n  \"longitude\": 61220600.69796148\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/customer?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+								},
+								{
+									"name": "Untitled Example",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"proident magna\",\n  \"name\": \"ad ipsum anim tempor\",\n  \"nameLegal\": \"occaecat do dolore non\",\n  \"street1\": \"esse exercitation\",\n  \"street2\": \"amet incididunt in\",\n  \"city\": \"officia sint irure laborum\",\n  \"state\": \"magna qui amet\",\n  \"zipcode\": \"ut minim consequat cillum ut\",\n  \"email\": \"consectetur pariatur\",\n  \"phone\": \"est dolore qui mollit incididunt\",\n  \"externalId\": \"proident ex\",\n  \"industry\": \"adipisicing occaecat magna pariatur re\",\n  \"status\": \"quis cillum ipsum\",\n  \"created\": \"2022-07-13T09:27:05.889Z\",\n  \"latitude\": 3163771.099624887,\n  \"longitude\": 61220600.69796148\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/customer?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"name": "Forbidden Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"proident magna\",\n  \"name\": \"ad ipsum anim tempor\",\n  \"nameLegal\": \"occaecat do dolore non\",\n  \"street1\": \"esse exercitation\",\n  \"street2\": \"amet incididunt in\",\n  \"city\": \"officia sint irure laborum\",\n  \"state\": \"magna qui amet\",\n  \"zipcode\": \"ut minim consequat cillum ut\",\n  \"email\": \"consectetur pariatur\",\n  \"phone\": \"est dolore qui mollit incididunt\",\n  \"externalId\": \"proident ex\",\n  \"industry\": \"adipisicing occaecat magna pariatur re\",\n  \"status\": \"quis cillum ipsum\",\n  \"created\": \"2022-07-13T09:27:05.889Z\",\n  \"latitude\": 3163771.099624887,\n  \"longitude\": 61220600.69796148\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/customer?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The resource was not Found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"description": "(Required) ",
+												"key": "X-Boomtown-Request-Id",
+												"value": "minim exercitation"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"proident magna\",\n  \"name\": \"ad ipsum anim tempor\",\n  \"nameLegal\": \"occaecat do dolore non\",\n  \"street1\": \"esse exercitation\",\n  \"street2\": \"amet incididunt in\",\n  \"city\": \"officia sint irure laborum\",\n  \"state\": \"magna qui amet\",\n  \"zipcode\": \"ut minim consequat cillum ut\",\n  \"email\": \"consectetur pariatur\",\n  \"phone\": \"est dolore qui mollit incididunt\",\n  \"externalId\": \"proident ex\",\n  \"industry\": \"adipisicing occaecat magna pariatur re\",\n  \"status\": \"quis cillum ipsum\",\n  \"created\": \"2022-07-13T09:27:05.889Z\",\n  \"latitude\": 3163771.099624887,\n  \"longitude\": 61220600.69796148\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/customer?orgId=minim exercitation",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											],
+											"query": [
+												{
+													"key": "orgId",
+													"value": "minim exercitation"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.request.url.query.add({",
+									"    key: 'orgId',",
+									"    value: pm.iterationData.get('orgId'),",
+									"});",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// const orgIds = pm.collectionVariables.get(\"orgIds\");",
+									"",
+									"// if (orgIds && orgIds.length > 0) {",
+									"//     postman.setNextRequest('Customer Controller get');",
+									"",
+									"// } else {",
+									"//     postman.setNextRequest(null);",
+									"// }"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Health Controller check",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+									"    pm.test(\"health endpoint status code is 200\", () => {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"health endpoint overall status is ok\", () => {\r",
+									"        const responseJson = pm.response.json();\r",
+									"        pm.expect(responseJson.data.status).eql('ok');\r",
+									"    });\r",
+									"}\r",
+									"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+									"    pm.test(\"health endpoint should return invalid response\", () => {\r",
+									"        const responseJson = pm.response.json();\r",
+									"        pm.response.to.not.have.status(200);\r",
+									"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+									"        pm.expect(responseJson.title).is.not.null;\r",
+									"    });\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/health/check",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "The resource was returned successfully",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/health/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"health",
+										"check"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 200,\n  \"timestamp\": \"2022-09-29T05:45:36.320Z\",\n  \"message\": \"Success\",\n  \"links\": [\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    },\n    {\n      \"href\": \"API Method\",\n      \"rel\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"data\": {}\n}"
+						},
+						{
+							"name": "Forbidden Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/health/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"health",
+										"check"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"do incididunt consectetur ut\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"magna deserunt\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+						},
+						{
+							"name": "The resource was not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/health/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"health",
+										"check"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400\",\n  \"title\": \"Bad Request\",\n  \"statusCode\": 400,\n  \"details\": \"\",\n  \"instance\": \"API url\",\n  \"timestamp\": \"2022-09-29T05:45:36.317Z\",\n  \"invalidParams\": [\n    {\n      \"target\": {},\n      \"property\": \"dolor\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    },\n    {\n      \"target\": {},\n      \"property\": \"sed ipsum do magna sint\",\n      \"children\": [\n        [],\n        []\n      ],\n      \"constraints\": {\n        \"isLength\": \"title must be longer than or equal to 10 character\"\n      }\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Auth CRM Controller token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.url.query.add({\r",
+									"    key: 'orgId',\r",
+									"    value: pm.iterationData.get('orgId'),\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code >= 200 && pm.response.code < 400) {\r",
+									"    pm.test(\"auth crm token status code is 200\", () => {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"auth crm token should return valid response\", () => {\r",
+									"        const responseJson = pm.response.json();\r",
+									"        pm.expect(responseJson).is.not.null;\r",
+									"        if (pm.expect(responseJson.data).is.not.null) {\r",
+									"            pm.expect(responseJson.data.access_token).is.not.null;\r",
+									"        }\r",
+									"    });\r",
+									"}\r",
+									"else if (pm.response.code >= 400 && pm.response.code < 600) {\r",
+									"    pm.test(\"auth crm token should return invalid response\", () => {\r",
+									"        const responseJson = pm.response.json();\r",
+									"        pm.response.to.not.have.status(200);\r",
+									"        pm.expect(responseJson.statusCode).is.not.eqls(200);\r",
+									"        pm.expect(responseJson.title).is.not.null;\r",
+									"    });\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-Boomtown-Request-Id",
+										"value": "minim exercitation"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/token?orgId=minim exercitation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"token"
+									],
+									"query": [
+										{
+											"key": "orgId",
+											"value": "minim exercitation"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add(",
+					"    {",
+					"        key: 'X-Boomtown-Request-Id',",
+					"        value: pm.iterationData.get('xBoomtownRequestId')",
+					"    },",
+					"    {",
+					"        key: 'Content-Type',",
+					"        value: pm.iterationData.get('contentType')",
+					"    },",
+					"    {",
+					"        key: 'Accept',",
+					"        value: pm.iterationData.get('accept')",
+					"    },",
+					");",
+					"",
+					"// let orgIds = pm.collectionVariables.get(\"orgId\");",
+					"",
+					"// if(!orgIds || orgIds.length == 0) {",
+					"//     orgIds = [\"AsdBsd\", \"asd123\", 123456, \"123asd\", \"ede-3000-43ad-ac27-4772c3a7bc63sh\"];",
+					"// }",
+					"",
+					"// let currentOrgId = orgIds.shift();",
+					"// pm.collectionVariables.set(\"orgId\", currentOrgId);",
+					"// pm.collectionVariables.set(\"orgIds\", orgIds);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"//positive scenarios ",
+					"if (pm.response.code >= 200 && pm.response.code < 400) {",
+					"    pm.test('baseUrl should exist in environment', () => {",
+					"        pm.expect(pm.environment.has('baseUrl')).to.equal(true);",
+					"    });",
+					"    pm.test('xBoomtownRequestId should exist in collection variable', () => {",
+					"        pm.expect(pm.iterationData.has('xBoomtownRequestId')).to.equal(true);",
+					"    });",
+					"    pm.test('contentType should exist in collection variable', () => {",
+					"        pm.expect(pm.iterationData.has('contentType')).to.equal(true);",
+					"    });",
+					"    pm.test('accept should exist in collection variable', () => {",
+					"        pm.expect(pm.iterationData.has('accept')).to.equal(true);",
+					"    });",
+					"    pm.test('orgId should exist in collection variable', () => {",
+					"        pm.expect(pm.iterationData.has('orgId')).to.equal(true);",
+					"    });",
+					"}",
+					"//negative scenarios",
+					"// pm.test('baseUrl does not exist in environment', () => {",
+					"//     pm.expect(pm.environment.has('baseUrl')).to.equal(false);",
+					"// });",
+					"// pm.test('baseUrl in collection variable is not valid', () => {",
+					"//     pm.expect(pm.environment.has('baseUrl')).to.equal(null);",
+					"//     pm.expect(pm.environment.has('baseUrl')).to.equal(\" \");",
+					"//     pm.expect(pm.environment.has('baseUrl')).is.empty;",
+					"//     pm.expect(pm.environment.has('baseUrl')).is.undefined;",
+					"// });",
+					"// pm.test('xBoomtownRequestId does not exists in collection variable', () => {",
+					"//     pm.expect(pm.iterationData.has('xBoomtownRequestId')).to.equal(false);",
+					"// });",
+					"",
+					"// if (pm.expect(pm.iterationData.has('xBoomtownRequestId')).to.not.equal(true)) {",
+					"//     pm.test('xBoomtownRequestId in collection variable is not valid', () => {",
+					"//         pm.expect(pm.iterationData.has('xBoomtownRequestId')).to.be.false;",
+					"//         // pm.expect(pm.iterationData.has('xBoomtownRequestId')).to.equal(null);",
+					"//         // pm.expect(pm.iterationData.has('xBoomtownRequestId')).to.equal(\" \");",
+					"//         pm.expect(pm.iterationData.has('xBoomtownRequestId')).is.empty;",
+					"//         pm.expect(pm.iterationData.has('xBoomtownRequestId')).is.undefined;",
+					"//     });",
+					"// }",
+					"// pm.test('contentType does not exists in collection variable', () => {",
+					"//     pm.expect(pm.iterationData.has('contentType')).to.equal(false);",
+					"// });",
+					"if (pm.expect(pm.iterationData.has('contentType')).is.not.eqls(\"application/json\")) {",
+					"    pm.test('contentType in collection variable is not valid', () => {",
+					"        // pm.expect(pm.iterationData.has('accept')).to.be.false;",
+					"        //     pm.expect(pm.iterationData.has('contentType')).to.equal(null);",
+					"        //     pm.expect(pm.iterationData.has('contentType')).to.equal(\" \");",
+					"        // pm.expect(pm.iterationData.has('contentType')).is.null;",
+					"        // pm.expect(pm.iterationData.has('contentType')).is.undefined;",
+					"        pm.expect(pm.iterationData.has('contentType')).is.not.eqls(\"application/json\");",
+					"    });",
+					"}",
+					"// pm.test('accept does not exists in collection variable', () => {",
+					"//     pm.expect(pm.iterationData.has('accept')).to.equal(false);",
+					"// });",
+					"if (pm.expect(pm.iterationData.has('accept')).is.not.eqls(\"application/json\")) {",
+					"    pm.test('accept in collection variable is not valid', () => {",
+					"        // pm.expect(pm.iterationData.has('accept')).to.be.false;",
+					"        // pm.expect(pm.iterationData.has('accept')).to.equal(null);",
+					"        // pm.expect(pm.iterationData.has('accept')).to.equal(\" \");",
+					"        // pm.expect(pm.iterationData.has('accept')).is.null;",
+					"        // pm.expect(pm.iterationData.has('accept')).is.undefined;",
+					"        pm.expect(pm.iterationData.has('accept')).is.not.eqls(\"application/json\");",
+					"    });",
+					"}",
+					"// pm.test('orgId does not exists in collection variable', () => {",
+					"//     pm.expect(pm.iterationData.has('orgId')).to.be.false;",
+					"// });",
+					"// if (pm.expect(pm.iterationData.has('orgId')).to.be.null) {",
+					"//     pm.test('orgId in collection variable is not valid', () => {",
+					"//         pm.expect(pm.iterationData.has('orgId')).to.be.null;",
+					"//         // pm.expect(pm.iterationData.has('orgId')).to.equal(null);",
+					"//         // pm.expect(pm.iterationData.has('orgId')).to.equal(\" \");",
+					"//         // pm.expect(pm.iterationData.has('orgId')).is.empty;",
+					"//         // pm.expect(pm.iterationData.has('orgId')).is.undefined;",
+					"//     });",
+					"// }"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "xBoomtownRequestId",
+			"value": "testId",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "contentType",
+			"value": "application/json",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "accept",
+			"value": "application/json",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "orgConfiguration",
+			"value": ""
+		}
+	]
+}

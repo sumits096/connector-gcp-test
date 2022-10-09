@@ -1,4 +1,16 @@
 steps:
+# Run analysis on newman postman api test
+- name: 'gcr.io/cloud-builders/npm'
+  dir: connector/
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    npm install
+    newman run /test/api/MsDynamics.postman_collection.json -e /test/api/feature.postman_environment.json -d /test/api/apiTestIterationValues.json -r cli,junit --reporter-junitfull-export /test/api/api-test-result.xml
+  id: 'execute-api-tests'
+  waitFor: ['-'] # The '-' indicates that this step begin immediately
+
 # Copy environment variables
 - name: 'gcr.io/cloud-builders/npm'
   dir: connector/
@@ -8,7 +20,7 @@ steps:
   - |
     echo "PRIVATE_KEY: $$PRIVATE_KEY"
   id: 'copy-env-variables'
-  waitFor: ['-'] # The '-' indicates that this step begin immediately
+  waitFor: ['execute-api-tests']
   secretEnv: ['PRIVATE_KEY']
 
 # Build the artifact image

@@ -5,6 +5,7 @@ steps:
   args:
   - '-c'
   - |
+    npm install node
     npm install newman
     npm install newman-reporter-junitfull
     newman run connector/test/api/MsDynamics.postman_collection.json -e connector/test/api/feature.postman_environment.json -d connector/test/api/apiTestIterationValues.json -r cli,junit --reporter-junitfull-export connector/test/api/api-test-result.xml

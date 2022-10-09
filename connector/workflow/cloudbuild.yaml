@@ -1,13 +1,13 @@
 steps:
 # Run analysis on newman postman api test
 - name: 'gcr.io/cloud-builders/npm'
-  dir: connector/
   entrypoint: 'bash'
   args:
   - '-c'
   - |
-    npm install
-    npm run api-test
+    npm install newman
+    npm install newman-reporter-junitfull
+    newman run connector/test/api/MsDynamics.postman_collection.json -e connector/test/api/feature.postman_environment.json -d connector/test/api/apiTestIterationValues.json -r cli,junit --reporter-junitfull-export connector/test/api/api-test-result.xml
   id: 'execute-api-tests'
   waitFor: ['-'] # The '-' indicates that this step begin immediately
 

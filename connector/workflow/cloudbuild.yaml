@@ -1,6 +1,7 @@
 steps:
 # Run analysis on newman postman api test
 - name: 'gcr.io/cloud-builders/npm'
+  dir: connector/
   entrypoint: 'bash'
   args:
   - '-c'

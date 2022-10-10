@@ -2278,7 +2278,6 @@
 											"        pm.expect(responseJson).is.not.null;\r",
 											"        if (pm.expect(responseJson.data).is.not.null) {\r",
 											"            pm.expect(responseJson.data).is.not.null;\r",
-											"            pm.expect(responseJson.data.orgId).eql(pm.iterationData.get('orgId'));\r",
 											"        }\r",
 											"    });\r",
 											"}\r",

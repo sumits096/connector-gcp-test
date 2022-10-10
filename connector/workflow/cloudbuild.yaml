@@ -8,8 +8,8 @@ steps:
     if [ ${_EXECUTE_PLAYWRIGHT} == true ]
     then
       echo 'Execute playwright test cases'
-      git config --global user.name sumits096
-      git config --global user.email sumits@incubxperts.com
+      git config user.name "sumits096"
+      git config user.email "sumits@incubxperts.com"
       git remote set-url origin main
     fi  
   id: 'git-initialize'

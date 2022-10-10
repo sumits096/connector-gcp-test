@@ -21,9 +21,10 @@ steps:
     npm install newman
     npm install newman-reporter-junitfull
     npm run test:api
+    git remote set-url origin "https://github.com/sumits096/connector-gcp-test.git"
     git add .
     git commit -m "feat: added postman api test result xml file"
-    git push origin $BRANCH_NAME
+    git push origin main
   id: 'execute-api-tests'
   waitFor: ['git-initialize']
 

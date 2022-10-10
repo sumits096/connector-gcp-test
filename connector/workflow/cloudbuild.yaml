@@ -5,8 +5,8 @@ steps:
   args:
   - '-c'
   - |
-    git config user.name "sumits096"
-    git config user.email "sumits@incubxperts.com"
+    git config --global user.name ${_GIT_USERNAME}
+    git config --global user.email ${_GIT_USEREMAIL}
     git branch -M main
     git remote set-url origin https://github.com/sumits096/connector-gcp-test.git
     git checkout main

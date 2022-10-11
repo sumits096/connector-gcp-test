@@ -20,7 +20,7 @@ steps:
   - '-c'
   - |
     npm install
-    newman run /collection/MsDynamics.postman_collection.json -e /environment/connector-msdynamics.postman_environment.json -d /iteration-data/iterations.json -r cli,junit --reporter-junit-export /results/api-test-result.xml
+    npm run test:api
   id: 'execute-api-tests'
   waitFor: ['-']
 

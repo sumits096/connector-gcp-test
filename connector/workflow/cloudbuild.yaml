@@ -20,10 +20,7 @@ steps:
   - '-c'
   - |
     npm install
-    newman run ./collection/MsDynamics.postman_collection.json -e ./environment/connector-msdynamics.postman_environment.json --env-var baseUrl=$(cat /workspace/connector/msdynamics_url.txt) -d ./iteration-data/iterations.json -r cli,junit --reporter-junit-export ./results/api-test-result.xml
-    git add .
-    git commit -m "feat: added postman api test result xml file"
-    git push origin main
+    newman run ./collection/MsDynamics.postman_collection.json -e ./environment/connector-msdynamics.postman_environment.json -d ./iteration-data/iterations.json -r cli,junit --reporter-junit-export ./results/api-test-result.xml
   id: 'execute-api-tests'
   waitFor: ['-']
 

@@ -1,0 +1,50 @@
+[
+  {
+    "xBoomtownRequestId": "testId",
+    "contentType": "application/json",
+    "accept": "application/json",
+    "orgId": "AsdBsd"
+  },
+  {
+    "xBoomtownRequestId": "",
+    "contentType": "",
+    "accept": "",
+    "orgId": ""
+  },
+  {
+    "xBoomtownRequestId": " ",
+    "contentType": " ",
+    "accept": " ",
+    "orgId": " "
+  },
+  {
+    "xBoomtownRequestId": "reqId",
+    "contentType": "application/json",
+    "accept": "application/json",
+    "orgId": "123asd"
+  },
+  {
+    "xBoomtownRequestId": "",
+    "contentType": "application/json",
+    "accept": "application/json",
+    "orgId": "123asd"
+  },
+  {
+    "xBoomtownRequestId": "xBtReqId",
+    "contentType": "",
+    "accept": "application/json",
+    "orgId": "ede-3000-43ad-ac27-4772c3a7bc63sh"
+  },
+  {
+    "xBoomtownRequestId": "xBtReqId",
+    "contentType": "application/json",
+    "accept": "",
+    "orgId": "ede-3000-43ad-ac27-4772c3a7bc63sh"
+  },
+  {
+    "xBoomtownRequestId": "xBtReqId",
+    "contentType": "application/json",
+    "accept": "application/json",
+    "orgId": "BOI"
+  }
+]

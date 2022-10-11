@@ -1,0 +1,27 @@
+{
+    "name": "api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "prettier-format": "prettier --config .prettierrc **/*.ts --write"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@playwright/test": "^1.22.2",
+        "dotenv": "^16.0.1"
+    },
+    "dependencies": {
+        "husky": "^8.0.1",
+        "prettier": "^2.7.1",
+        "newman": "^5.3.2",
+        "newman-reporter-junitfull": "^1.1.1"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run prettier-format"
+        }
+    }
+}

@@ -1,16 +1,16 @@
 steps:
 # Clone playwright test repository
-- name: gcr.io/cloud-builders/git
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    git config --global user.name ${_GIT_USERNAME}
-    git config --global user.email ${_GIT_USEREMAIL}
-    git remote set-url origin ${_GIT_REPO} 
-    git checkout main
-  id: 'git-initialize'
-  waitFor: ['-'] # The '-' indicates that this step begin immediately
+# - name: gcr.io/cloud-builders/git
+#   entrypoint: 'bash'
+#   args:
+#   - '-c'
+#   - |
+#     git config --global user.name ${_GIT_USERNAME}
+#     git config --global user.email ${_GIT_USEREMAIL}
+#     git remote set-url origin ${_GIT_REPO} 
+#     git checkout main
+#   id: 'git-initialize'
+#   waitFor: ['-'] # The '-' indicates that this step begin immediately
   
 # Run analysis on newman postman api test
 - name: 'gcr.io/cloud-builders/npm'
@@ -26,7 +26,7 @@ steps:
     git commit -m "feat: added postman api test result xml file"
     git push origin main
   id: 'execute-api-tests'
-  waitFor: ['git-initialize']
+  waitFor: ['-']
 
 # Copy environment variables
 - name: 'gcr.io/cloud-builders/npm'
